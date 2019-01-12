@@ -481,35 +481,35 @@ Figurem 8 shows that line of code is constant and independent of node number. Th
 results of implemented algorithms shows significant improvement in comparison to the address space generaion without the algorithms, presented above. The nodes can also be modified by UA Server Admin in online or offline mode and by client in online mode.
 
 \subsection{Security}
-One of the main parameters of the OPC UA specification that has a significant impact on performance of the resource constrained devices is security. As stated in the part 7 ---------cite OPC UA specifications part 7------- of the OPC UA specifications, OPC UA provides three security profiles: Basic128Rsa15, Basic256 and None. Since OPC UA is used at different levels of automation in disparate applications within the same environment, a good trade off between the security and performance should be reached. This can bne done by taking into consideration, the level at which OPC UA is implemented. For example, At the very high level, where the device resources are abundant and where security might be more important than the performance, the profile which provides the highest amount of security should be used. Where as at very low levels, like in embedded devices where the device resources are very scarce, but security might not be as important as the performance, a weaker security profile which favors performance should be used.
+One of the main parameters of the OPC UA specification that has a significant impact on performance of the resource constrained devices is security. As stated in the part 7 of the OPC UA specifications, OPC UA provides three security profiles: Basic128Rsa15, Basic256 and None. Since OPC UA is used at different levels of automation in disparate applications within the same environment, a good trade off between the security and performance should be reached. This can bne done by taking into consideration, the level at which OPC UA is implemented. For example, At the very high level, where the device resources are abundant and where security might be more important than the performance, the profile which provides the highest amount of security should be used. Where as at very low levels, like in embedded devices where the device resources are very scarce, but security might not be as important as the performance, a weaker security profile which favors performance should be used.
 
 Based on this premise, Olli Post, Jari Sepp\"al\"a and Hannu Koivisto have measured the performance of resource constrained devices in the paper "The performance of OPC UA security model at field device level". The findings of the evaluation are as follows. \cite{post2009performance}
 
 For the evaluation of the performance in terms of efficient data transfer, all the three security profiles of the OPC UA specification namely None, Basic256 and Basic128Rsa15 as well as IPSec AH were compared. The evaluation was done to asses the delay caused by security measures with three packet sizes 1024 bytes, 10 240 bytes and 10 400 bytes.
 
-IPSec is a network layer protocol that guarantees data confidentiality and integrity, origin identification and prevent replay attacks (Douligeriset al., 2007)--------------cite this ref properly-------------
+IPSec is a network layer protocol that guarantees data confidentiality and integrity, origin identification and prevent replay attacks (Douligeriset al., 2007)\cite{post2009performance}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=50mm]{Figures/security_fig2}\quad
-\caption[Subfigure example]{\label{f:security_fig2}Comparison between different OPC UA security profiles\\ with 102400 bytes}
+\caption[Subfigure example]{\label{f:security_fig2}Comparison between different OPC UA security profiles\\ with 102400 bytes \cite{post2009performance}}
 \end{figure}
 
-The first evaluation was done on 10 240 bytes which is represented in the figure 2 ----------- insert the figure and cite it properly----------------. The figure shows the delay caused by none, 128signed, 128encrypted, 256signed, 256encrypted and IPSec profiles. It can be seen in the figure that there is a tremendous delay when the data was encrypted in cases of 128encrypted and 265encrypted as opposed to the security profile None. Hence based on the evaluation, it is safe to say that in field or embedded devices which are strapped for resources and where confidentiality of the data is not a strict requirement, encryption adds a significant delay and is not an optimal solution for efficient data transfer. 
+The first evaluation was done on 10 240 bytes which is represented in the figure~\ref{f:security_fig2}. The figure shows the delay caused by none, 128signed, 128encrypted, 256signed, 256encrypted and IPSec profiles. It can be seen in the figure that there is a tremendous delay when the data was encrypted in cases of 128encrypted and 265encrypted as opposed to the security profile None. Hence based on the evaluation, it is safe to say that in field or embedded devices which are strapped for resources and where confidentiality of the data is not a strict requirement, encryption adds a significant delay and is not an optimal solution for efficient data transfer. 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=50mm]{Figures/security_fig3}\quad
-\caption[Subfigure example]{\label{f:security_fig3}Delay caused in a data size of 1024 bytes}
+\caption[Subfigure example]{\label{f:security_fig3}Delay caused in a data size of 1024 bytes \cite{post2009performance}}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=50mm]{Figures/security_fig4}\quad
-\caption[Subfigure example]{\label{f:security_fig4}Delay caused in a data size of 1024 bytes}
+\caption[Subfigure example]{\label{f:security_fig4}Delay caused in a data size of 1024 bytes \cite{post2009performance}}
 \end{figure}
 
-The next performance measurements were done with a small data size of 1024 Bytes. The figures 3 and 4 show the delay caused in sending packets with 1024 bytes. The figure 3 and 4 depict the comparison between the profiles None, Basic128 and the Basic256 , IPSec AH. It can be inferred from the diagrams that authentication does not have a big impact in terms of delay in small packets of 1024 bytes.	 	 
+The next performance measurements were done with a small data size of 1024 Bytes. The figures~\ref{f:security_fig3} and ~\ref{f:security_fig4} show the delay caused in sending packets with 1024 bytes. The figure~\ref{f:security_fig3} and ~\ref{f:security_fig4} depict the comparison between the profiles None, Basic128 and the Basic256 , IPSec AH. It can be inferred from the diagrams that authentication does not have a big impact in terms of delay in small packets of 1024 bytes.	 	 
 
 
 \subsubsection{Subsubsection Heading Here}
