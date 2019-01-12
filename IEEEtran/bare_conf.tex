@@ -519,7 +519,40 @@ Subsubsection text here.
 OPC UA is used to enable Internet of Things for industrial automation applications which provides powerful information representation that is exchangeable through inter operable services. The scalability of OPC UA refers to the ability of the hardware devices at different levels in the same environment to implement OPC UA efficiently. The problem with most of the current implementations of OPC UA is that they come with a lot of features which might not be needed by a hardware device at a certain level. Since each hardware device does not have the capability to implement every feature of OPC UA, the implementation  of all the features including the ones which are not used by the device puts unnecessary strain on the device in terms of memory, network overhead etc. 
 Some off the shelf implementations of OPC UA take as much as 10MB of memory. \cite{6622935} The memory required by the OPC UA implementation is directly proportional to the number of features implemented and the complexity of those features. But some devices in the environment may have as less as a few kilo bytes of memory. Hence off the shelf implementation of OPC UA is not suitable for such devices. New stripped down implementations need to be tested for such resource limited devices. 
 
-The paper "Scalability of OPC-UA down to the chip level enables Internet of Things" by Jahanzaib Imtiaz and Jürgen Jasperneite investigates one such implementation of OPC UA for resource limited devices based on the "Nano Embedded Device Server Profiles" of the OPC foundation.   
+The paper "Scalability of OPC-UA down to the chip level enables Internet of Things" by Jahanzaib Imtiaz and Jürgen Jasperneite investigates one such implementation of OPC UA for resource limited devices based on the "Nano Embedded Device Server Profile" of the OPC foundation. This profile servers two purposes. First is to reduce the complexity of the implementation and the second is to minimize the memory footprint enabling it to be used on smaller devices.------------cite the paper -----------
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=125mm]{Figures/nano_embeddedSP}\quad
+\caption[Subfigure example]{\label{f:nano_embeddedSP}Components of Nano Embedded Device Server profile}
+\end{figure}
+
+
+\subsubsection{Nano Embedded Device Server Profile}
+This is a profile which encapsulates all the essential features of the OPC UA and describes a bare minimal OPC UA server functionality for small constrained devices. It uses the TCP binary protocol as the transport profile.
+The components of this profile are:
+
+\begin{itemize}
+\item An Address Space component that describes the information model of the application which is exposed to the external environment. ----- cite -----
+
+\item The Security component deals with the authentication and encryption aspects. In smaller devices, stringent security is not emphasized. This component provides security compliant with the "None" security profile of OPC UA.  ------ cite-----
+
+\item The Session component is responsible for establishing a single secure session between the client and the server at any given time. ------ cite-----
+
+\item The transport component implements a binary transport mechanism on top of TCP\textbackslash IP.
+
+\item The Discovery component implements the discovery service without registering to the external discovery server. It answers the self discovery queries from the external clients. ------------cite-----
+
+\item The View component traverses through the information model and browses the application specific address space.
+
+\item The Attribute component is responsible for reading and writing of specific attributes of an object in the address space.
+\end{itemize}
+
+In the paper, the authors have conducted a simple case study of implementing this nano server profile to test the effectiveness of it. The case study consists of sue case of IoT in industrial automation domain. ---------- cite--------------
+Upon implementation of this profile, it was found that OPC UA can be successfully scaled down to the small memory constrained devices while still retaining all the main features of the OPC UA.
+It was found that the OPC UA server with basic set of services can be implemented in as less as 10 KB of the memory excluding the TCP\textbackslash IP.
+Also, using this profile has simplified the software integration  in most of the smallest devices in the internet of things. Thus, using this profile has demonstrated the high saclability of OPC UA enabling the efficient use of the OPC UA specification at any level of the automation pyramid.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
