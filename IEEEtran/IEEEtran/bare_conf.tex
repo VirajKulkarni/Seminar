@@ -417,68 +417,54 @@ I wish you the best of success.
 
 
 \subsection{Reducing the network footprint}
-Dürkop et al (2012) have identified that the memory footprint for current OPC UA was too high for small devices \cite{durkop2012service}. In this work \cite{durkop2012service} two Service Oriented Architectures (SOA) for autoconfiguration of real-time ethernet systems have been introduced. The first Architecture is Device Profile for Web Service (DPWS) and the second is OPC UA. In addition to these SOAs, memory footprint for OPC UA implementation has been discussed. It has been emphasized, that significantly less program and data memory was needed for OPC UA, and number of code lines was less than a half of the DPWS. For both DPWS and OPC UA servers the Tiger Profinet Solution (TPS-1) has been chosen. It was extended the firmware by OPC UA stack using binary encoding. The OPC UA server was implemented on the Nano Embedded Device Server profiles. The binary transport profile was assigned, and the authentication using certificates have been used for the support. Dürkop et al (2012) have concluded that OPC UA requires significantly less hardware resources. Authors have emphasized that OPC UA server was developed from scratch in order to achieve small memory footprint for embedded devices. Further, in the article \cite{shrestha2013optimized} it has been discussed how to minimize the OPC UA network footprint in order to fit Bluetooth Low energy (BLE) frame. In paper \cite{imtiaz2013scalability} authors have implemented TCP-1 with real-time Ethernet interfaces, but the problem with devices with different transport protocol technologies, such as BLE, CAN bus, has appeared. The cause of this problem is low payload size of these protocol technologies. That is the reason why the authors \cite{shrestha2013optimized} have suggested to optimize OPC UA information model to suite it for BLE and CAN bus. In their article, authors have proposed to optimize the size of OPC UA in ReadResponse fields.
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.78\linewidth]{Figures/optimize}\quad
-\caption[Subfigure optimize]{\label{f:optimize}
-Message size dependence on the used encoding from \cite{middleware2014optimizing}, p.1574}
-\end{figure} 
- OPC UA Transport Profile (OOTP) with TCP/IP protocol has been implemented. As a result, OPC UA optimized header uses only 7 bytes and there are 7 bytes left for payload. This article has presented the possibility to integrate the OPC UA network footprint to the different small devices.
-
+Dürkop et al (2012) have identified that the memory footprint for current OPC UA was too high for small devices \cite{durkop2012service}. In this work \cite{durkop2012service} two Service Oriented Architectures (SOA) for autoconfiguration of real-time ethernet systems have been introduced. The first Architecture is Device Profile for Web Service (DPWS) and the second is OPC UA. In addition to these SOAs, memory footprint for OPC UA implementation has been discussed. It has been emphasized, that significantly less program and data memory was needed for OPC UA, and number of code lines was less than a half of the DPWS. For both DPWS and OPC UA servers the Tiger Profinet Solution (TPS-1) has been chosen. It was extended the firmware by OPC UA stack using binary encoding. The OPC UA server was implemented on the Nano Embedded Device Server profiles. The binary transport profile was assigned, and the authentication using certificates have been used for the support. Dürkop et al (2012) have concluded that OPC UA requires significantly less hardware resources. Authors have emphasized that OPC UA server was developed from scratch in order to achieve small memory footprint for embedded devices. Further, in the article \cite{shrestha2013optimized} it has been discussed how to minimize the OPC UA network footprint in order to fit Bluetooth Low energy (BLE) frame. In paper [6] authors have implemented TCP-1 with real-time Ethernet interfaces, but the problem with devices with different transport protocol technologies, such as BLE, CAN bus, has appeared. The cause of this problem is low payload size of these protocol technologies. That is the reason why the authors \cite{shrestha2013optimized} have suggested to optimize OPC UA information model to suite it for BLE and CAN bus. In their article, authors have proposed to optimize the size of OPC UA in ReadResponse fields. OPC UA Transport Profile (OOTP) with TCP/IP protocol has been implemented. As a result, OPC UA optimized header uses only 7 bytes and there are 7 bytes left for payload. This article has presented the possibility to integrate the OPC UA network footprint to the different small devices.
 
 
 \subsection{Efficient OPC UA encoding}
-The next improvement area for embedded devices is a possibility to encode data. It allows transferring data for devices with limited access memory \cite{efficient2016binaryencoding}. Reduced bandwidth becomes a very important aspect, because it is increasing use of “smart” field devices in industrial networks and there is also semantic integration for device layers \cite{efficient2016binaryencoding}. Article \cite{middleware2014optimizing} integrate different performance optimization techniques into the OPC UA. This include asynchronous communication and different encoding possibilities). OPC UA has been working in the IEC 61850-OPC UA mapping system (IEC 61850 is communication protocol which is international defined). Proposed possibilities have been analyzed in simulation environment. OPC UA communication is based on XML-based web service. To reduce message size two encoding technologies where discussed, such as EXI and Binary. There are several articles which highlight this technologies \cite{efficient2016binaryencoding} \cite{middleware2014optimizing}.First \cite{middleware2014optimizing} article discuses both XML Interchange (EXI) and Binary encoding and second only binary encoding. The EXI is a design for high performance parsing, which contains main benefits of both the XML and UA Binary - the binary encoding is the most efficient and it has less message size, but EXI is web technology and have good tool support \cite{middleware2014optimizing}.
+The next improvement area for embedded devices is a possibility to encode data. It allows transferring data for devices with limited access memory [2]. Reduced bandwidth becomes a very important aspect, because it is increasing use of “smart” field devices in industrial networks and there is also semantic integration for device layers [2]. OPC UA communication is based on XML-based web service. There are several articles which highlight this aspect [2][3]. In these articles [2][3] two encoding services have been analyzed. The terms of Efficient XML Interchange (EXI) and Binary encoding have been introduced. The EXI is a design for high performance parsing, which contains main benefits of both the XML and UA Binary - the binary encoding is the most efficient and it has less message size, but EXI is web technology and have good tool support [3].
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\linewidth]{Figures/encoding}\quad
-\caption[Subfigure example]{\label{f:encoding}Message size dependence on the used encoding from \cite{middleware2014optimizing}, p.1574}
+\includegraphics[height=45mm, width = 4in]{Figures/encoding}\quad
+\caption[Subfigure example]{\label{f:encoding}Message size dependence on the used encoding\\ from [2], p.1574}
 \end{figure}
- 
 
-In Figure 1 shows, that UA binary and EXI encoding have significant reduced message size compared to the XML. But between EXI and Binary is not much difference. The next article \cite{efficient2016binaryencoding} describes the binary encoding for limited memory devices. Main focus was on single-chip microcomputing platforms. Goal was to reduce bandwidth to (116 kB for Namespace 0). It was clarified that, if we want to improve bandwidth, it is possible only if data is compressed as a service\cite{efficient2016binaryencoding}. Parsing XML data are problematic and it is necesary to parse data in memory to access it efficiently. That was the reason why authors presented  OPC UA hardware server IP Core to overcome the limitation. To use this technology binary encoding was created. As a result binary encoding was suitable for small devices such as 8 bit Electrically Erasable Programmable Read-Only Memory (EEPROM) and Flash memory products. String compression demonstrated that the memory requirements have reduced from 197 kb to 116 kb, which corresponds to the 56\% of improvement\cite{efficient2016binaryencoding}.
 
+The next article [2] describes the binary encoding and demonstrates that the memory requirements have reduced from 197 kb to 116 kb, which corresponds to the 56\% of improvement.
 
 
 \subsection{Efficient address space}
 This problem is addressed in the paper “Efficient address space generation for an OPC UA Server” by Girbea et al (2011) [1]. Address space improvement is a very important aspect to get the speedup for development and maintenance time. In order to understand the structure of OPC UA Serve, the startup procedure has been discussed. OPC UA Server startup consists of multiple steps, as presented on the Figure~\ref{f:Steps}. 
 
-\begin{figure}[ht]
+\begin{figure*}[ht]
 \centering
-\includegraphics[width=1\linewidth]{Figures/Steps}\quad
+\includegraphics[height=55mm, width = 5in]{Figures/Steps}\quad
 \caption{\label{f:Steps}Wide single column figure in a twocolumn document.}
-\end{figure}
+\end{figure*}
 
-On the left-hand side of the Figure~\ref{f:Steps} there are main steps to be programmed. The list of the actions for the address space generation are presented on the right-hand side of the Figure~\ref{f:Steps} [1]. The authors claim that the main units of address space are nodes and connected references. The base nodes are abstract and all the other nodes are subparts of base nodes, such as variable, variabletype, object objecttype, data view and method. There are 4 algorithms have been implemented, created for type nodes, for methods, for view and for object. There can be some similarities in these 4 algorithms. Nevertheless, the details description of each algorithm is not relevant for this seminar paper. The first algorithm uses referencetype hierarchy and have several similar properties with objecttypes and variabletypes. The second algorithm uses object nodes hierarchy and is similar to the variable nodes. The third algorithm is based on method nodes. This algorithm adds the nodes in success groups. The fourth algorithm generates the view nodes hierarchy. Algorithm 5 is simple and it reads the source, gets target node and reference and after that adds reference to address space\cite{addressspace2012efficient}. 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width= 1\linewidth]{Figures/Table1new}\quad
-\caption[Subfigure example]{\label{f:Table1new} Improvement of development time from \cite{addressspace2012efficient} p. 555.}
-
-\end{figure}
+On the left-hand side of the Figure~\ref{f:Steps} there are main steps to be programmed. The list of the actions for the address space generation are presented on the right-hand side of the Figure~\ref{f:Steps} [1]. The authors claim that the main units of address space are nodes and connected references. The base nodes are abstract and all the other nodes are subparts of base nodes, such as variable, variabletype, object objecttype, data view and method. There are 4 algorithms have been implemented, created for type nodes, for methods, for view and for object. There can be some similarities in these 4 algorithms. Nevertheless, the details description of each algorithm is not relevant for this seminar paper. The first algorithm uses referencetype hierarchy and have several similar properties with objecttypes and variabletypes. The second algorithm uses object nodes hierarchy and is similar to the variable nodes. The third algorithm is based on method nodes. This algorithm adds the nodes in success groups. The fourth algorithm generates the view nodes hierarchy. Algorithm 5 is simple and it reads the source, gets target node and reference and after that adds reference to address space [1]. 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width= 1\linewidth]{Figures/Table2new}\quad
-\caption[Subfigure example]{\label{f:Table2new} Improvement of maintenance time  from \cite{addressspace2012efficient} p. 556.}
+\includegraphics[height=50mm]{Figures/NodeAlgorithm}\quad
+\caption[Subfigure example]{\label{f:NodeAlgorithm}From [1] p. 555 Lines of code used to generate the\\ address space.}
 \end{figure}
-
-Figure 3 shows that the main advantage of the presented algorithms is reduced development time. Speedup was around 2.2-2.3
-
-Figure 4 shows that  maintenance time speedup was 1.4-1.6 
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\linewidth]{Figures/NodeAlgorithm}\quad
-\caption[Subfigure example]{\label{f:NodeAlgorithm}From \cite{addressspace2012efficient} p. 555 Lines of code used to generate the address space.}
+\includegraphics[height=50mm, width = 3.5in]{Figures/Table1}\quad
+\caption[Subfigure example]{\label{f:Table1}From [1] p. 555.}
 \end{figure}
 
-Figurem 8 shows that line of code is constant and independent of node number. This means that the more nodes the more efficient will be the algorithm. 
+\begin{figure}[ht]
+\centering
+\includegraphics[height=50mm,width = 3.5in]{Figures/Table2}\quad
+\caption[Subfigure example]{\label{f:Table2}From [1] p. 556.}
+\end{figure}
 
-results of implemented algorithms shows significant improvement in comparison to the address space generaion without the algorithms, presented above. The nodes can also be modified by UA Server Admin in online or offline mode and by client in online mode.
+
+The main advantage of the presented algorithms is reduced development time. From Table 1 Speedup was around 2.2-2.3 and Maintenance time speedup was 1.4-1.6, which shows the significant improvement in comparison to the address space generaion without the algorithms, presented above. The nodes can also be modified by UA Server Admin in online or offline mode and by client in online mode.
 
 \subsection{Security}
 One of the main parameters of the OPC UA specification that has a significant impact on performance of the resource constrained devices is security. As stated in the part 7 ---------cite OPC UA specifications part 7------- of the OPC UA specifications, OPC UA provides three security profiles: Basic128Rsa15, Basic256 and None. Since OPC UA is used at different levels of automation in disparate applications within the same environment, a good trade off between the security and performance should be reached. This can bne done by taking into consideration, the level at which OPC UA is implemented. For example, At the very high level, where the device resources are abundant and where security might be more important than the performance, the profile which provides the highest amount of security should be used. Where as at very low levels, like in embedded devices where the device resources are very scarce, but security might not be as important as the performance, a weaker security profile which favors performance should be used.
