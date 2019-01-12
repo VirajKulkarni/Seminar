@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{5641184}
+S.~Cavalieri and G.~Cutuli.
+\newblock Performance evaluation of opc ua.
+\newblock In {\em 2010 IEEE 15th Conference on Emerging Technologies Factory
+  Automation (ETFA 2010)}, pages 1--8, Sep. 2010.
+
+\bibitem{durkop2012service}
+L.~D{\"u}rkop, J.~Imtiaz, H.~Trsek, and J.~Jasperneite.
+\newblock Service-oriented architecture for the autoconfiguration of real-time
+  ethernet systems.
+\newblock In {\em 3rd Annual Colloquium Communication in Automation (KommA)},
+  2012.
+
+\bibitem{6622935}
+J.~Imtiaz and J.~Jasperneite.
+\newblock Scalability of opc-ua down to the chip level enables “internet of
+  things”.
+\newblock In {\em 2013 11th IEEE International Conference on Industrial
+  Informatics (INDIN)}, pages 500--505, July 2013.
+
+\bibitem{post2009performance}
+O.~Post, J.~Sepp{\"a}l{\"a}, and H.~Koivisto.
+\newblock The performance of opc-ua security model at field device level.
+\newblock In {\em ICINCO-RA}, pages 337--341, 2009.
+
+\bibitem{shrestha2013optimized}
+G.~M. Shrestha, J.~Imtiaz, and J.~Jasperneite.
+\newblock An optimized opc ua transport profile to bringing bluetooth low
+  energy device into ip networks.
+\newblock In {\em Emerging Technologies \& Factory Automation (ETFA), 2013 IEEE
+  18th Conference on}, pages 1--5. IEEE, 2013.
+
+\end{thebibliography}
