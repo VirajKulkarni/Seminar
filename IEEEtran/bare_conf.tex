@@ -481,11 +481,11 @@ Figurem 8 shows that line of code is constant and independent of node number. Th
 results of implemented algorithms shows significant improvement in comparison to the address space generaion without the algorithms, presented above. The nodes can also be modified by UA Server Admin in online or offline mode and by client in online mode.
 
 \subsection{Security}
-One of the main parameters of the OPC UA specification that has a significant impact on performance of the resource constrained devices is security. As stated in the part 7 of the OPC UA specifications, OPC UA provides three security profiles: Basic128Rsa15, Basic256 and None. Since OPC UA is used at different levels of automation in disparate applications within the same environment, a good trade off between the security and performance should be reached. This can bne done by taking into consideration, the level at which OPC UA is implemented. For example, At the very high level, where the device resources are abundant and where security might be more important than the performance, the profile which provides the highest amount of security should be used. Where as at very low levels, like in embedded devices where the device resources are very scarce, but security might not be as important as the performance, a weaker security profile which favors performance should be used.
+One of the main parameters of the OPC UA specification that has a significant impact on performance of the resource constrained devices is security. As stated in the part 7 of the OPC UA specifications, OPC UA provides three security profiles: Basic128Rsa15, Basic256 and None. Since OPC UA is used at different levels of automation in disparate applications within the same environment, a good trade off between the security and performance should be reached. This can be done by taking into consideration, the level at which OPC UA is implemented. For example, At the very high level, where the device resources are abundant and where security might be more important than the performance, the profile which provides the highest amount of security should be used. Where as at very low levels, like in embedded devices where the device resources are very scarce, but security might not be as important as the performance, a weaker security profile which favors performance should be used.
 
-Based on this premise, Olli Post, Jari Sepp\"al\"a and Hannu Koivisto have measured the performance of resource constrained devices in the paper "The performance of OPC UA security model at field device level". The findings of the evaluation are as follows. \cite{post2009performance}
+Based on this premise, Olli Post, Jari Sepp\"al\"a and Hannu Koivisto have measured the performance of resource constrained devices in the paper "The performance of OPC UA security model at field device level". The findings of the evaluation are as follows. 
 
-For the evaluation of the performance in terms of efficient data transfer, all the three security profiles of the OPC UA specification namely None, Basic256 and Basic128Rsa15 as well as IPSec AH were compared. The evaluation was done to asses the delay caused by security measures with three packet sizes 1024 bytes, 10 240 bytes and 10 400 bytes.
+For the evaluation of the performance in terms of efficient data transfer, all the three security profiles of the OPC UA specification namely None, Basic256 and Basic128Rsa15 as well as IPSec AH were compared. The evaluation was done to asses the delay caused by security measures with three packet sizes 1024 bytes, 10 240 bytes and 10 400 bytes.\cite{post2009performance}
 
 IPSec is a network layer protocol that guarantees data confidentiality and integrity, origin identification and prevent replay attacks (Douligeriset al., 2007)\cite{post2009performance}
 
@@ -519,40 +519,96 @@ Subsubsection text here.
 OPC UA is used to enable Internet of Things for industrial automation applications which provides powerful information representation that is exchangeable through inter operable services. The scalability of OPC UA refers to the ability of the hardware devices at different levels in the same environment to implement OPC UA efficiently. The problem with most of the current implementations of OPC UA is that they come with a lot of features which might not be needed by a hardware device at a certain level. Since each hardware device does not have the capability to implement every feature of OPC UA, the implementation  of all the features including the ones which are not used by the device puts unnecessary strain on the device in terms of memory, network overhead etc. 
 Some off the shelf implementations of OPC UA take as much as 10MB of memory. \cite{6622935} The memory required by the OPC UA implementation is directly proportional to the number of features implemented and the complexity of those features. But some devices in the environment may have as less as a few kilo bytes of memory. Hence off the shelf implementation of OPC UA is not suitable for such devices. New stripped down implementations need to be tested for such resource limited devices. 
 
-The paper "Scalability of OPC-UA down to the chip level enables Internet of Things" by Jahanzaib Imtiaz and Jürgen Jasperneite investigates one such implementation of OPC UA for resource limited devices based on the "Nano Embedded Device Server Profile" of the OPC foundation. This profile servers two purposes. First is to reduce the complexity of the implementation and the second is to minimize the memory footprint enabling it to be used on smaller devices.------------cite the paper -----------
+The paper "Scalability of OPC-UA down to the chip level enables Internet of Things" by Jahanzaib Imtiaz and Jürgen Jasperneite investigates one such implementation of OPC UA for resource limited devices based on the "Nano Embedded Device Server Profile" of the OPC foundation. This profile servers two purposes. First is to reduce the complexity of the implementation and the second is to minimize the memory footprint enabling it to be used on smaller devices. \cite{6622935}
 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[height=125mm]{Figures/nano_embeddedSP}\quad
-\caption[Subfigure example]{\label{f:nano_embeddedSP}Components of Nano Embedded Device Server profile}
+\caption[Subfigure example]{\label{f:nano_embeddedSP}Components of Nano Embedded Device Server profile \cite{6622935}}
 \end{figure}
 
 
 \subsubsection{Nano Embedded Device Server Profile}
 This is a profile which encapsulates all the essential features of the OPC UA and describes a bare minimal OPC UA server functionality for small constrained devices. It uses the TCP binary protocol as the transport profile.
-The components of this profile are:
+The components of this profile are\cite{6622935}:
 
 \begin{itemize}
-\item An Address Space component that describes the information model of the application which is exposed to the external environment. ----- cite -----
+\item An Address Space component that describes the information model of the application which is exposed to the external environment.
 
-\item The Security component deals with the authentication and encryption aspects. In smaller devices, stringent security is not emphasized. This component provides security compliant with the "None" security profile of OPC UA.  ------ cite-----
+\item The Security component deals with the authentication and encryption aspects. In smaller devices, stringent security is not emphasized. This component provides security compliant with the "None" security profile of OPC UA.
 
-\item The Session component is responsible for establishing a single secure session between the client and the server at any given time. ------ cite-----
+\item The Session component is responsible for establishing a single secure session between the client and the server at any given time.
 
 \item The transport component implements a binary transport mechanism on top of TCP\textbackslash IP.
 
-\item The Discovery component implements the discovery service without registering to the external discovery server. It answers the self discovery queries from the external clients. ------------cite-----
+\item The Discovery component implements the discovery service without registering to the external discovery server. It answers the self discovery queries from the external clients.
 
 \item The View component traverses through the information model and browses the application specific address space.
 
 \item The Attribute component is responsible for reading and writing of specific attributes of an object in the address space.
 \end{itemize}
 
-In the paper, the authors have conducted a simple case study of implementing this nano server profile to test the effectiveness of it. The case study consists of sue case of IoT in industrial automation domain. ---------- cite--------------
+In the paper, the authors have conducted a simple case study of implementing this nano server profile to test the effectiveness of it. The case study consists of use case of IoT in industrial automation domain.\cite{6622935}
 Upon implementation of this profile, it was found that OPC UA can be successfully scaled down to the small memory constrained devices while still retaining all the main features of the OPC UA.
 It was found that the OPC UA server with basic set of services can be implemented in as less as 10 KB of the memory excluding the TCP\textbackslash IP.
 Also, using this profile has simplified the software integration  in most of the smallest devices in the internet of things. Thus, using this profile has demonstrated the high saclability of OPC UA enabling the efficient use of the OPC UA specification at any level of the automation pyramid.
+
+\subsection{Efficient Communication}
+Communication protocols in OPC UA is another area where optimization need to be done for optimal use of OPC UA in resource constrained applications. The problem which is faced while implementing OPC UA with traditional communication protocols such as HTTP, realtime ethernet protocols , MQTT and Constrained application protocol(CoAP) is that these protocols have huge communication overheads for lightweight and resource constrained devices. 
+The existing CoAP protocol is a lightweight binary protocol designed to be implemented in constrained devices and serves as an alternative to the traditional text based hyper text transfer protocol (HTTP). Even with the existence CoAP, other avenues need to be explored and researched to make the communication even more efficient.
+
+Representational state transfer(REST) with OPC UA is one such protocol that has been proven to work well with constrained devices. In the paper RESTful industrial communication with OPC UA, the authors present a strong case to demonstrate the efficiencey and the benifits of using REST.\cite{gruner2016restful}
+
+Representational state transfer is an architecture style for resource oriented distributed applications.\cite{gruner2016restful}
+It uses simple and uniform interfaces for the exchange of resource representations. The interfaces do not depend on the resource, be it a physical or a virtual resource since only CRUD (Create, Read, Update, Delete) operations are available. The representation of different resources is heterogeneous.
+
+RESTful communication paradigm is OPC UA specification compliant as follows\cite{gruner2016restful}:
+
+\begin{itemize}
+\item Addressability: All the nodes in an address space have a unique identifier. They can be located by the browse paths which are in hierarchical relation to the parent nodes.
+
+\item Statelessness: The requests and responses are self contained. They don not rely on the previous data to complete the requests. This enables asynchronous communication with multiple requests are sent in parallel without waiting for the response. This reduces the memory requirements of the server that need to maintain and handle many connections.
+
+\item Connectedness: One of the basic concepts of OPC UA is that the nodes in the address space should be able to communicate with each other. Using REST, this can be implemented easily since all the nodes are addressable with their unique URL.
+
+\item Uniform interfaces: The interface for interacting with every resource should be the same. This  
+is satisfied by REST as every resource, irrespective of its type can be interacted with in the same way.
+\end{itemize}
+
+Following are some of the use cases for which RESTful OPC UA is beneficial:
+
+\begin{itemize}
+\item Short lived communications: This use case has to do with small constrained devices where the servers have to cope with many clients and many requests at the same time. Many servers have to deal with loads millions of requests and clients on a single device. This puts a considerable load on the memory to store these many connections and the complex data structures on the RAM. With RESTful stateless connections, the server has to keep only the socket connection data without any additional per client information thus reducing the load. This is very helpful especially in the nano profile which is used in constrained devices where only one session is permitted. This means that the server cannot accept any new connection until the existing session is expired. This problem is solved bu using REST.\cite{gruner2016restful}
+
+\item Low energy clients: In constrained IoT devices which are run on batteries, it is imperative to reduce the communication overhead to increase their lifetime. Using REST with OPC UA paired with UDP provides session less communication which greatly reduces the number of round trips needed to exchange the basic information. 
+
+\item RESTful OPC UA over hybrid fieldbuses: Industrial ethernet has been used increasingly the recent years where both a deterministic transportation mode (e.g., based on assigning time slices in a master/slave setting) and nondeterministic communication via Ethernet are combined\cite{gruner2016restful}
+In these scenarios, usually, the bandwidth is limited. REST OPC UA can be used here since the communication is stateless and no session keep alive is necessary.
+
+\end{itemize}
+
+To demonstrate the feasibility of RESTful OPC UA, the authors evaluated and measured the performance of standard OPC UA and RESTful OPC UA in terms of the time required for a complete message exchange. A complete message exchange comprises of establishing a connection, sending a single read request query for a single node property, receiving the response and closing the connection.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=60mm]{Figures/REST1}\quad
+\caption[Subfigure example]{\label{f:REST1}Message exchange for a single Read request. \\(a)Standard OPC UA, (2)RESTful OPC UA}
+\end{figure}
+
+
+In the figure~\ref{f:REST1}, the duration of a standard compliant message exchanged is compared to the message exchange with a RESTful extension to OPC UA. It was observed that a speedup of about three to four times was achieved when comparing stateful and stateless connections over TCP and a speed up of about five to seven times when comparing stateful TCP and stateless UDP message exchange.  
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=50mm]{Figures/REST2}\quad
+\caption[Subfigure example]{\label{f:REST2}Total message exchange duration on a number of Read\\ requests in one exchange on a Raspberry Pi}
+\end{figure}
+
+It can be observed from the measurements that stateless exchange over UDP takes minimal time to perform \cite{gruner2016restful}. Also, the standard compliant exchange over TCP leads to the biggest delay while executing a service request.	Based on these and other such measurements it can be inferred that the RESTful communication has several benefits in comparison to the standard OPC UA protocol. Firstly, the communication overhead is greatly reduced in terms of the packets exchanged between the client and the server. Secondly, it scales well on the servers with high amount of connected devices as the server does not store the session information. Despite of the benefits, the measurements do not take into consideration, the security aspect of the communication. This remains to be topic of future research where optimal security is combined with RESTful OPC UA.  
+
+  
+
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
